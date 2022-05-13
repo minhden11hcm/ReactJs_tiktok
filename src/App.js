@@ -2,6 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoutes } from "~/routes";
 import { DefaultLayout } from "~/components/Layout";
 import { Fragment } from "react";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+
+library.add(fas, fab);
+
 function App() {
   return (
     <Router>
@@ -12,7 +19,7 @@ function App() {
 
             if (router.layout) {
               Layout = router.layout;
-            } else if(router.layout === null) {
+            } else if (router.layout === null) {
               Layout = Fragment;
             }
 
