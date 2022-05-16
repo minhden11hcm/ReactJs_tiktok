@@ -8,8 +8,25 @@ import "tippy.js/dist/tippy.css";
 import { Wrapper as WrapperPopper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
+import Menu from "~/components/Popper/Menu";
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+  {
+    icon: <FontAwesomeIcon icon="fa-solid fa-earth-africa" />,
+    title: "English",
+  },
+  {
+    icon: <FontAwesomeIcon icon="fa-solid fa-circle-question" />,
+    title: "Feedback and help",
+    to: "/feedback",
+  },
+  {
+    icon: <FontAwesomeIcon icon="fa-solid fa-keyboard" />,
+    title: "Keyboard shortcut",
+  },
+];
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
 
@@ -64,6 +81,12 @@ function Header() {
         <div className={cx("action")}>
           <Button text>Upload</Button>
           <Button primary>Log In</Button>
+
+          <Menu items={MENU_ITEMS}>
+            <button className={cx("more-btn")}>
+              <FontAwesomeIcon icon="fa-solid fa-ellipsis-vertical" />
+            </button>
+          </Menu>
         </div>
       </div>
     </header>
