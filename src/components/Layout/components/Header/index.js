@@ -16,6 +16,21 @@ const MENU_ITEMS = [
   {
     icon: <FontAwesomeIcon icon="fa-solid fa-earth-africa" />,
     title: "English",
+    children: {
+      title: "Language",
+      data: [
+        {
+          type: "language",
+          code: "en",
+          title: "English",
+        },
+        {
+          type: "language",
+          code: "vi",
+          title: "Tiếng Việt",
+        },
+      ],
+    },
   },
   {
     icon: <FontAwesomeIcon icon="fa-solid fa-circle-question" />,
@@ -29,6 +44,18 @@ const MENU_ITEMS = [
 ];
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
+
+  //Handle
+  const handleMenuChange = (menuItem) => {
+    switch (menuItem.type) {
+      case "language":
+        //Handle change language
+        break;
+
+      default:
+        break;
+    }
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -63,7 +90,7 @@ function Header() {
             <input
               type="text"
               placeholder="Search account and video"
-              spellcheck={false}
+              spellCheck={false}
             />
             <button className={cx("clear")}>
               <FontAwesomeIcon icon="fa-solid fa-circle-xmark" />
@@ -82,7 +109,7 @@ function Header() {
           <Button text>Upload</Button>
           <Button primary>Log In</Button>
 
-          <Menu items={MENU_ITEMS}>
+          <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
             <button className={cx("more-btn")}>
               <FontAwesomeIcon icon="fa-solid fa-ellipsis-vertical" />
             </button>
